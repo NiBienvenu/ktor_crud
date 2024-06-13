@@ -4,11 +4,15 @@ import com.bienvenu.model.Priority
 import com.bienvenu.model.Task
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Application.configureRouting() {
     routing {
+
+        staticResources("/task-ui", "task-ui")
+
         get("/") {
             call.respondText("Hello Bienvenu!")
         }
