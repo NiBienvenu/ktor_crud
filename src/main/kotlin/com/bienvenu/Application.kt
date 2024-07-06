@@ -1,13 +1,18 @@
 package com.bienvenu
 
-import com.bienvenu.plugins.*
+import com.bienvenu.plugins.configureRouting
+import com.bienvenu.plugins.configureSerialization
 import io.ktor.server.application.*
-
-fun main(args: Array<String>) {
-    io.ktor.server.netty.EngineMain.main(args)
-}
+import io.ktor.server.engine.*
+import io.ktor.server.tomcat.*
 
 fun Application.module() {
-    println("Application")
     configureRouting()
+    configureSerialization()
+}
+
+fun main() {
+    embeddedServer(Tomcat, port = 8080, host = "192.168.56.1") {
+        module()
+    }.start(wait = true)
 }
