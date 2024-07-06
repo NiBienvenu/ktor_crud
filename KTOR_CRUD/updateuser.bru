@@ -4,8 +4,17 @@ meta {
   seq: 1
 }
 
-get {
-  url: http://127.0.0.1:8080/user/1
-  body: none
+put {
+  url: http://127.0.0.1:8080/user/2
+  body: json
   auth: none
+}
+
+body:json {
+    {
+      "first"  :"Dev",
+      "last":"Bienvenu",
+      "gender":"male",
+      "dob":"20000"  
+    }
 }

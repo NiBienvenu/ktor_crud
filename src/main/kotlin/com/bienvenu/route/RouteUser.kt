@@ -20,6 +20,9 @@ fun Application.routeUser() {
         {
             call.respondText("Welcome to Ktor Mysql")
         }
+        get("/bienvenu"){
+            call.respondText("Welcome to Bienvenu")
+        }
 
         post("/register")
         {
@@ -75,16 +78,16 @@ fun Application.routeUser() {
 
         get("/user/{id}")
         {
-            println("=====================================")
+//            call.respondText("OK")
+
             println("Getting user by ID: ${call.parameters["id"]}")
-            println("=====================================")
-            val userIdStr = call.parameters["id"]
-            val userIdInt = userIdStr?.toInt() ?: -1
+            val pararmId = call.parameters["id"]
+            val id = pararmId?.toInt() ?: -1
 
             val user = db.from(EntityUser)
                 .select()
                 .where {
-                    EntityUser.id eq userIdInt
+                    EntityUser.id eq id
                 }
                 .map {
                     User(
