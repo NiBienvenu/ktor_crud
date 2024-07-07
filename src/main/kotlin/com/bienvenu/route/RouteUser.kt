@@ -34,10 +34,10 @@ fun Application.routeUser() {
             val user: User = call.receive()
             val noOfRowsAffected = db.insert(EntityUser)
             {
-                set(it.first, user.first)
-                set(it.last, user.last)
-                set(it.dob, user.dob)
-                set(it.gender, user.gender)
+                set(it.nom, user.nom)
+                set(it.prenom, user.prenom)
+                set(it.naissance, user.naissance)
+                set(it.genre, user.genre)
             }
 
             if (noOfRowsAffected > 0) {
@@ -62,10 +62,10 @@ fun Application.routeUser() {
                 .map {
                     User(
                         id = it[EntityUser.id],
-                        first = it[EntityUser.first],
-                        last = it[EntityUser.last],
-                        dob = it[EntityUser.dob],
-                        gender = it[EntityUser.gender]
+                        nom = it[EntityUser.nom],
+                        prenom = it[EntityUser.prenom],
+                        genre = it[EntityUser.genre],
+                        naissance = it[EntityUser.naissance]
                     )
                 }
 
@@ -97,10 +97,10 @@ fun Application.routeUser() {
                 .map {
                     User(
                         id = it[EntityUser.id],
-                        first = it[EntityUser.first],
-                        last = it[EntityUser.last],
-                        dob = it[EntityUser.dob],
-                        gender = it[EntityUser.gender]
+                        nom = it[EntityUser.nom],
+                        prenom = it[EntityUser.prenom],
+                        genre = it[EntityUser.genre],
+                        naissance = it[EntityUser.naissance]
                     )
                 }
                 .firstOrNull()
@@ -125,10 +125,10 @@ fun Application.routeUser() {
 
             val noOfRowsAffected = db.update(EntityUser)
             {
-                set(it.first, userReq.first)
-                set(it.last, userReq.last)
-                set(it.dob, userReq.dob)
-                set(it.gender, userReq.gender)
+                set(it.nom, userReq.nom)
+                set(it.prenom, userReq.prenom)
+                set(it.naissance, userReq.naissance)
+                set(it.genre, userReq.genre)
 
                 where {
                     it.id eq userIdInt

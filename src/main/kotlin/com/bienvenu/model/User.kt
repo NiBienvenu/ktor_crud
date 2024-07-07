@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName
 data class User(
 	@field:SerializedName("id")
 	val id: Int? = null,
-	@field:SerializedName("first")
-	val first: String? = null,
-	@field:SerializedName("last")
-	val last: String? = null,
-	@field:SerializedName("gender")
-	val gender: String? = null,
-	@field:SerializedName("dob")
-	val dob: String? = null
+	@field:SerializedName("nom")
+	val nom: String? = null,
+	@field:SerializedName("prenom")
+	val prenom: String? = null,
+	@field:SerializedName("genre")
+	val genre: String? = null,
+	@field:SerializedName("naissance")
+	val naissance: String? = null
 )
