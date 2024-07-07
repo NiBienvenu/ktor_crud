@@ -1,6 +1,7 @@
 package com.bienvenu.route
 
 
+import com.bienvenu.controller.UserController
 import com.bienvenu.model.User
 import com.bienvenu.mysql.DbConnection
 import com.bienvenu.mysql.entity.EntityUser
@@ -26,6 +27,10 @@ fun Application.routeUser() {
 
         post("/register")
         {
+//            val controller = UserController()
+//            controller.registerUser()
+
+
             val user: User = call.receive()
             val noOfRowsAffected = db.insert(EntityUser)
             {

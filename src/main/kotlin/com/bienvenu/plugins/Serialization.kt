@@ -16,7 +16,7 @@ fun Application.configureSerialization() {
 
     routing {
         get("/json/gson") {
-                call.respond(mapOf("hello" to "world"))
+                call.respond(mapOf("hello" to "Bienvenu"))
             }
     }
 }
