@@ -9,7 +9,7 @@ import io.ktor.server.tomcat.*
 fun Application.module() {
     configureRouting()
     configureSerialization()
-}
+} 
 
 fun main() {
     embeddedServer(Tomcat, port = 8080, host = "192.168.56.1") {

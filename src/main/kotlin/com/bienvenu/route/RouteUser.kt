@@ -3,7 +3,7 @@ package com.bienvenu.route
 
 import com.bienvenu.model.User
 import com.bienvenu.mysql.DbConnection
-import com.bienvenu.mysql.EntityUser
+import com.bienvenu.mysql.entity.EntityUser
 import com.bienvenu.util.GenericResponse
 import io.ktor.http.*
 import io.ktor.server.application.*

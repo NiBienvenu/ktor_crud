@@ -1,4 +1,4 @@
-package com.bienvenu.mysql
+package com.bienvenu.mysql.entity
 
 import org.ktorm.schema.Table
 import org.ktorm.schema.int
