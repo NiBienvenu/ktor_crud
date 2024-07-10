@@ -72,6 +72,14 @@ fun Application.routePost(){
                 GenericResponse(isSuccess = inserted > 0, data = inserted)
             )
         }
+        put("/updatepost/{id}") {
+            val pararmId = call.parameters["id"]
+            val id = pararmId?.toInt()?: -1
+            val post = call.receive<Post>()
+
+            val updated = db
+               .update(EntityPost) {
+        }
 
     }
 }
