@@ -3,6 +3,7 @@ package com.bienvenu.route
 import com.bienvenu.model.Post
 import com.bienvenu.mysql.DbConnection
 import com.bienvenu.mysql.entity.EntityPost
+import com.bienvenu.mysql.entity.EntityPost.updated_at
 import com.bienvenu.mysql.entity.EntityUser
 import com.bienvenu.util.GenericResponse
 import io.ktor.http.*
@@ -79,6 +80,27 @@ fun Application.routePost(){
 
             val updated = db
                .update(EntityPost) {
+//                    it[user_id] = p/ost.userId
+//                    it[title] = post.title
+//                    it[content] = post.content
+//                    it[updated_at] = post.updatedAt
+//                    where { EntityPost.id eq id   }
+                }
+
+        }
+        delete("/deletepost/{id}") {
+            val pararmId = call.parameters["id"]
+            val id = pararmId?.toInt()?: -1
+
+            val deleted = db
+               .delete(EntityPost) {
+                    EntityPost.id eq id
+                }
+
+            call.respond(
+                HttpStatusCode.NoContent,
+                GenericResponse(isSuccess = deleted > 0, data = deleted)
+            )
         }
 
     }
