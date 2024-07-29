@@ -57,8 +57,34 @@ dependencies {
 
 }
 
+val buildingJarFileName = "temp-server.jar"
+val startingJarFileName = "server.jar"
+
+val serverUser = "root"
+val serverHost = ""
+//val serverPort = 22
+val serverSshKey = file("key/id_rsa")
+val deleteLog =true
+val lockFileName=".serverLock"
+
+val  serviceName = "ktor-server"
+val serverFolderName = "app"
+
 ktor {
     fatJar {
-        archiveFileName.set("fat.jar")
+        archiveFileName.set(buildingJarFileName)
     }
+}
+
+ant.withGroovyBuilder {
+    "taskdef"(
+        "name" to "scp",
+        "classname" to "org.apache.tools.ant.taskdefs.optional.ssh.scp",
+        "classpath" to configurations["sshAntTask"].asPath
+    )
+    "taskdef"(
+        "namw" to "ssh",
+        "classname" to "org.apache.tools.ant.taskdefs.optional.ssh.SSHExec",
+        "classpath" to configurations["sshAntTask"].asPath
+    )
 }
