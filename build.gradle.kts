@@ -22,6 +22,17 @@ repositories {
     mavenCentral()
 }
 
+val javaVersion = JavaVersion.VERSION_11
+
+tasks.withType<JavaCompile>{
+    sourceCompatibility = javaVersion.toString()
+    targetCompatibility = javaVersion.toString()
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>{
+    kotlinOptions.jvmTarget = javaVersion.toString()
+}
+
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
