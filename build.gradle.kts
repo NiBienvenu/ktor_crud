@@ -32,7 +32,7 @@ tasks.withType<JavaCompile>{
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>{
     kotlinOptions.jvmTarget = javaVersion.toString()
 }
-
+val sshAntTask = configurations.create("sshAntTask")
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
@@ -53,5 +53,12 @@ dependencies {
     implementation ("org.ktorm:ktorm-core:3.4.1") //ktorm
     implementation ("mysql:mysql-connector-java:8.0.29") //mysql connector
 
+    sshAntTask("org.apache.ant:ant-jsch:1.10.13")
+
 }
 
+ktor {
+    fatJar {
+        archiveFileName.set("fat.jar")
+    }
+}
